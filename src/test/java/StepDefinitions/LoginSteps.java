@@ -18,10 +18,12 @@ public class LoginSteps {
         driver.navigate().to("https://practicetestautomation.com/practice-test-login/");
     }
     @When("user types the username and password")
-    public void user_types_the_username_and_password() {
+    public void user_types_the_username_and_password() throws InterruptedException {
         System.out.println("user types the username and password");
         driver.findElement(By.name("username")).sendKeys("student");
         driver.findElement(By.name("password")).sendKeys("Password123");
+
+        Thread.sleep(4000);// 4 segundos
 
     }
     @And("clicks on the Login button")
@@ -31,7 +33,7 @@ public class LoginSteps {
 
     }
     @Then("the user is sent  to the congratulations page")
-    public void the_user_is_sent_to_the_congratulations_page() {
+    public void the_user_is_sent_to_the_congratulations_page() throws InterruptedException {
 
         System.out.println("the user is sent  to the congratulations page");
         if (driver.findElement(By.className("wp-block-button__link")).isDisplayed()){
@@ -40,6 +42,11 @@ public class LoginSteps {
             System.out.println("OH NO I FAILED :V");
         }
        // driver.findElement(By.className("wp-block-button__link")).isDisplayed();
+        Thread.sleep(4000);// 4 segundos
+
+
+        driver.close();
+        driver.quit();
 
     }
 
